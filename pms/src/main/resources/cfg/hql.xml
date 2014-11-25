@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping> 
+  <sql-query name="findUserInfo">
+  	<return alias="userPoints" class="com.uswop.pms.dto.TuserPoints">
+  	  <return-property name="id" column="userId"/>
+      <return-property name="points" column="points"/>        		
+  	</return>
+  	<![CDATA[select info.role_name AS userId,info.pid AS points from admin_role info where info.role_name= ?]]>
+  </sql-query>  
+  <sql-query name="updateUserInfo">  	
+  	<![CDATA[update admin_role set pid=:POINTS where role_name=:ID]]>
+  </sql-query>        
+</hibernate-mapping>
