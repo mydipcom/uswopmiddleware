@@ -5,12 +5,12 @@
 <hibernate-mapping> 
   <sql-query name="findUserInfo">
   	<return alias="userPoints" class="com.uswop.pms.dto.TuserPoints">
-  	  <return-property name="id" column="userId"/>
+  	  <return-property name="userId" column="userId"/>
       <return-property name="points" column="points"/>        		
   	</return>
-  	<![CDATA[select info.role_name AS userId,info.pid AS points from admin_role info where info.role_name= ?]]>
+  	<![CDATA[select info.userid AS userId,info.points AS points from user_points info where info.userid= ?]]>
   </sql-query>  
   <sql-query name="updateUserInfo">  	
-  	<![CDATA[update admin_role set pid=:POINTS where role_name=:ID]]>
+  	<![CDATA[update user_points set points=:POINTS where userid=:ID]]>
   </sql-query>        
 </hibernate-mapping>
