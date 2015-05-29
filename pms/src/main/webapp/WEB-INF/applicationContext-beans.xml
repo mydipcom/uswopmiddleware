@@ -16,8 +16,11 @@
 	
 	
 	<bean id="systemConfig" class="com.uswop.pms.commons.SystemConfig" lazy-init="true">
-		<property name="apiKey" value="${api.access.key}"/>	
+		<property name="appId" value="${api.access.appid}"/>
+		<property name="appPublicKey" value="${api.access.publickey}"/>
+		<property name="tokenExpiresIn" value="${api.access.token.expiresin}"/>	
 	</bean>
 	
-	<bean id="userPointsService" class="com.uswop.pms.service.impl.UserPointsServiceImplBySql" autowire="byName"/>		
+	<bean id="userPointsService" class="com.uswop.pms.service.impl.UserPointsServiceImplBySql" autowire="byName"/>
+	<bean id="userService" class="com.uswop.pms.service.impl.UserServiceImplBySql" autowire="byName"/>		
 </beans>

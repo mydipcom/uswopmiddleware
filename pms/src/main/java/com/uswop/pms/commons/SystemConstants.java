@@ -20,12 +20,21 @@ public class SystemConstants {
 	public static final String MSGNAME_USERPOINTS_GETUSERINFO_IS_NULL="error.UserPointsServiceImpl.getUserInfoById.isNull";
 	public static final String MSGNAME_USERPOINTS_DEDUCTPOINTS_FAILED="error.UserPointsServiceImpl.deductPoints";
 	
-	public static final String SQL_QUERY_NAME_FINDUSER="findUserInfo";
+	public static final String MSGNAME_USER_GETUSERINFO_IS_NULL="error.UserServiceImpl.getUser.isNull";
 	
-	public static final String SQL_QUERY_NAME_UPDATEUSER="updateUserInfo";
+    public static final String SQL_NAME_QUERY_FIND_USER="getUserInfo";
+    
+    public static final String SQL_NAME_QUERY_VALIDATE_USER="validateUser";
+    
+    public static final String SQL_NAME_QUERY_FIND_USERADDR="getUserAddr";
+		
+	
+	public static final String SQL_NAME_QUERY_FIND_USERPOINTS="findUserPoints";
+	
+	public static final String SQL_NAME_QUERY_UPDATE_USERPOINTS="updateUserPoints";
 			
-	public static final String SQL_PARAM_NAME_USERID="ID";
+	public static final String SQL_PARAM_USERID="ID";
 	
-	public static final String SQL_PARAM_NAME_POINTS="POINTS";
+	public static final String SQL_PARAM_POINTS="POINTS";
 	
 }

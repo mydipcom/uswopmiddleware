@@ -35,7 +35,9 @@
 	<property name="mappingResources">
 	  <list>		
 	      <value>cfg/hql.xml</value>
+	      <value>cfg/User.hbm.xml</value>
 	      <value>cfg/UserPoints.hbm.xml</value>	      
+	      <value>cfg/UserAddr.hbm.xml</value>	      
 	  </list>
 	</property>
 	 
@@ -69,6 +71,7 @@
 <tx:advice id="txAdvice" transaction-manager="transactionManager">
 	<tx:attributes>
 		<tx:method name="get*" read-only="true"/>
+		<tx:method name="validate*" read-only="true"/>
 		<tx:method name="*"  read-only="false" rollback-for="Exception" propagation="REQUIRED"/>
 	</tx:attributes>
 </tx:advice>

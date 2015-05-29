@@ -42,6 +42,5 @@
   </filter>  
   <session-config>
     <session-timeout>1380</session-timeout>
-  </session-config>
-  <display-name>Archetype Created Web Application</display-name>  
+  </session-config>  
 </web-app>

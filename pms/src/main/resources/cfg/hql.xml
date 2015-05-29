@@ -3,14 +3,43 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping> 
-  <sql-query name="findUserInfo">
+  <sql-query name="findUserPoints">
   	<return alias="userPoints" class="com.uswop.pms.dto.TuserPoints">
   	  <return-property name="userId" column="userId"/>
       <return-property name="points" column="points"/>        		
   	</return>
   	<![CDATA[select info.userid AS userId,info.points AS points from user_points info where info.userid= ?]]>
   </sql-query>  
-  <sql-query name="updateUserInfo">  	
+  <sql-query name="updateUserPoints">  	
   	<![CDATA[update user_points set points=:POINTS where userid=:ID]]>
-  </sql-query>        
+  </sql-query>
+  
+  <sql-query name="getUserInfo">
+  	<return alias="user" class="com.uswop.pms.dto.Tuser">
+  	  <return-property name="userId" column="userId"/>
+      <return-property name="userName" column="userName"/>
+      <return-property name="email" column="email"/>        		
+  	</return>
+  	<![CDATA[select info.userid AS userId,info.userName AS userName,info.email AS email from user info where info.userid= ?]]>
+  </sql-query>
+  <sql-query name="validateUser">
+  	<return alias="user" class="com.uswop.pms.dto.Tuser">
+  	  <return-property name="userId" column="userId"/>
+      <return-property name="userName" column="userName"/>
+      <return-property name="email" column="email"/>        		
+  	</return>
+  	<![CDATA[select info.userid AS userId,info.userName AS userName,info.email AS email from user info where info.userid= ? and info.pwd=?]]>
+  </sql-query> 
+  
+  <sql-query name="getUserAddr">
+  	<return alias="userAddr" class="com.uswop.pms.dto.TuserAddr">
+  	  <return-property name="addrId" column="addrId"/>
+      <return-property name="address" column="address"/>
+      <return-property name="recipients" column="recipients"/>
+      <return-property name="phone" column="phone"/> 
+      <return-property name="postalcode" column="postalcode"/>
+      <return-property name="country" column="country"/>         		
+  	</return>
+  	<![CDATA[select addr.addrId AS addrId,addr.address AS address,addr.recipients AS recipients,addr.phone AS phone,addr.postalcode AS postalcode,addr.country AS country from user_addr addr where addr.userid= ?]]>
+  </sql-query>       
 </hibernate-mapping>

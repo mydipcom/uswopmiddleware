@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.uswop.pms.dto.Tuser"
+		table="user_addr" lazy="false">
+		<id name="addrId" type="java.lang.Integer">
+			<column name="addrid" />
+			<generator class="identity"></generator>
+		</id>
+		<property name="address" type="String">
+			<column name="address"/>
+		</property>	
+		<property name="recipients" type="String">
+			<column name="recipients"/>
+		</property>	
+		<property name="phone" type="String">
+			<column name="recipients"/>
+		</property>
+		<property name="country" type="String">
+			<column name="country"/>
+		</property>
+		<property name="postalcode" type="String">
+			<column name="postalcode"/>
+		</property>
+	</class>
+</hibernate-mapping>

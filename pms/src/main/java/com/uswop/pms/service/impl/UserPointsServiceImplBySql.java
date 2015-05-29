@@ -18,7 +18,7 @@ public class UserPointsServiceImplBySql implements UserPointsService {
 	private UserPointsDao userPointsDao;
 				
 	public TuserPoints getUserInfoById(String userId) {							
-		TuserPoints userInfo = userPointsDao.findUniqueByHqlName(SystemConstants.SQL_QUERY_NAME_FINDUSER,userId);
+		TuserPoints userInfo = userPointsDao.findUniqueByHqlName(SystemConstants.SQL_NAME_QUERY_FIND_USERPOINTS,userId);
 		if(userInfo==null){
 			throw new UswopException(SystemConstants.MSGNAME_USERPOINTS_GETUSERINFO_IS_NULL);
 		}
@@ -26,16 +26,16 @@ public class UserPointsServiceImplBySql implements UserPointsService {
 	}
 		
 	public void deductPoints(String userId,int deductedPoints) {
-		TuserPoints userInfo = userPointsDao.findUniqueByHqlName(SystemConstants.SQL_QUERY_NAME_FINDUSER,userId);
+		TuserPoints userInfo = userPointsDao.findUniqueByHqlName(SystemConstants.SQL_NAME_QUERY_FIND_USERPOINTS,userId);
 		if(userInfo==null){
 			throw new UswopException(SystemConstants.MSGNAME_USERPOINTS_GETUSERINFO_IS_NULL);
 		}
 		int curPoints=userInfo.getPoints();
 		if(curPoints>=deductedPoints){
 			Map<String,Object> paramMap=new HashMap<String,Object>();
-			paramMap.put(SystemConstants.SQL_PARAM_NAME_USERID, userId);
-			paramMap.put(SystemConstants.SQL_PARAM_NAME_POINTS, curPoints-deductedPoints);			
-			userPointsDao.updateByHqlName(SystemConstants.SQL_QUERY_NAME_UPDATEUSER,paramMap);			
+			paramMap.put(SystemConstants.SQL_PARAM_USERID, userId);
+			paramMap.put(SystemConstants.SQL_PARAM_POINTS, curPoints-deductedPoints);			
+			userPointsDao.updateByHqlName(SystemConstants.SQL_NAME_QUERY_UPDATE_USERPOINTS,paramMap);			
 		}
 		else{
 			throw new UswopException(SystemConstants.MSGNAME_USERPOINTS_DEDUCTPOINTS_FAILED);
@@ -44,14 +44,14 @@ public class UserPointsServiceImplBySql implements UserPointsService {
 	}
 	
 	public void addPoints(String userId,int addedPoints) {
-		TuserPoints userInfo = userPointsDao.findUniqueByHqlName(SystemConstants.SQL_QUERY_NAME_FINDUSER,userId);
+		TuserPoints userInfo = userPointsDao.findUniqueByHqlName(SystemConstants.SQL_NAME_QUERY_FIND_USERPOINTS,userId);
 		if(userInfo==null){
 			throw new UswopException(SystemConstants.MSGNAME_USERPOINTS_GETUSERINFO_IS_NULL);
 		}
 		int curPoints=userInfo.getPoints();
 		Map<String,Object> paramMap=new HashMap<String,Object>();
-		paramMap.put(SystemConstants.SQL_PARAM_NAME_USERID, userId);
-		paramMap.put(SystemConstants.SQL_PARAM_NAME_POINTS, curPoints+addedPoints);		
-		userPointsDao.updateByHqlName(SystemConstants.SQL_QUERY_NAME_UPDATEUSER,paramMap);		
+		paramMap.put(SystemConstants.SQL_PARAM_USERID, userId);
+		paramMap.put(SystemConstants.SQL_PARAM_POINTS, curPoints+addedPoints);		
+		userPointsDao.updateByHqlName(SystemConstants.SQL_NAME_QUERY_UPDATE_USERPOINTS,paramMap);		
 	}
 }
