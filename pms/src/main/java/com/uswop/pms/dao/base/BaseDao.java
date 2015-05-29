@@ -278,8 +278,7 @@ public class BaseDao<T> extends HibernateDaoSupport
     @SuppressWarnings("unchecked")
 	public T findUniqueByHqlName(String hqlName, Object[] params)
     {
-        Query query = this.currentSession().getNamedQuery(hqlName);
-
+        Query query = this.currentSession().getNamedQuery(hqlName);        
         for (int i = 0; i < params.length; i++ )
         {
             query.setParameter(i, params[i]);

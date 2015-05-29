@@ -3,6 +3,7 @@
  */
 package com.uswop.pms.api;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -64,6 +65,12 @@ public class UserAPI extends BaseController {
 		}
 		String userid=null;				
 		try{
+			try {
+				jsonStr=new String(jsonStr.getBytes(),"utf-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			jsonObj= (JSONObject)JSON.parse(jsonStr);
 			userid=jsonObj.getString("userId");
 			String pwd=SecurityTools.MD5(jsonObj.getString("pwd"));

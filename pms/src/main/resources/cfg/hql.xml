@@ -15,20 +15,22 @@
   </sql-query>
   
   <sql-query name="getUserInfo">
-  	<return alias="user" class="com.uswop.pms.dto.Tuser">
-  	  <return-property name="userId" column="userId"/>
-      <return-property name="userName" column="userName"/>
+  	<return alias="user" class="com.uswop.pms.dto.Tuser">  	  
+  	  <return-property name="userId" column="userid"/>
+  	  <return-property name="pwd" column="pwd"/>
+      <return-property name="userName" column="username"/>
       <return-property name="email" column="email"/>        		
   	</return>
-  	<![CDATA[select info.userid AS userId,info.userName AS userName,info.email AS email from user info where info.userid= ?]]>
+  	<![CDATA[select userid,pwd,username,email from user where userid= ?]]>
   </sql-query>
   <sql-query name="validateUser">
   	<return alias="user" class="com.uswop.pms.dto.Tuser">
-  	  <return-property name="userId" column="userId"/>
-      <return-property name="userName" column="userName"/>
-      <return-property name="email" column="email"/>        		
+  	  <return-property name="userId" column="userid"/>
+      <return-property name="userName" column="username"/>
+      <return-property name="email" column="email"/>   
+      <return-property name="pwd" column="pwd"/>   		
   	</return>
-  	<![CDATA[select info.userid AS userId,info.userName AS userName,info.email AS email from user info where info.userid= ? and info.pwd=?]]>
+  	<![CDATA[select userid,username,email,pwd from user where userid= ? and pwd= ?]]>
   </sql-query> 
   
   <sql-query name="getUserAddr">

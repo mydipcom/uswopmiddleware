@@ -95,7 +95,7 @@ public class TokenAPI extends BaseController {
 			String appId=request.getParameter("appId");
 			String appSecret=request.getParameter("appSecret");
 			if(systemConfig.getAppId().equals(appId)){
-				if(systemConfig.getApiKey().equals(appSecret)){
+				if(systemConfig.getApiKey().equalsIgnoreCase(appSecret)){
 					JSONObject dataObj=new JSONObject();
 					SystemCached.Api_Token_CreatedTime=System.currentTimeMillis();
 					SystemCached.Api_Token=SecurityTools.SHA1(systemConfig.getAppId()+SystemCached.Api_Token_CreatedTime+systemConfig.getAppPublicKey());

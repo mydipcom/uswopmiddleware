@@ -9,10 +9,13 @@
 			<column name="userid" />
 			<generator class="assigned"></generator>
 		</id>
-		<property name="userName" type="String">
-			<column name="userName"/>
+		<property name="pwd" type="string">
+			<column name="pwd"/>
 		</property>	
-		<property name="email" type="String">
+		<property name="userName" type="string">
+			<column name="username"/>
+		</property>	
+		<property name="email" type="string">
 			<column name="email"/>
 		</property>	
 	</class>

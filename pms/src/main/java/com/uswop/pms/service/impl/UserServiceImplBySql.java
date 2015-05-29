@@ -27,7 +27,8 @@ public class UserServiceImplBySql implements UserService {
 
 	@Override
 	public Tuser validateUser(String userId, String pwd) {		
-		String[] value=new String[]{userId,pwd};		
+		String[] value=new String[]{userId,pwd};
+		//return userDao.findUniqueByHqlName(SystemConstants.SQL_NAME_QUERY_VALIDATE_USER, new String[]{"ID","PWD"}, value);
 		return userDao.findUniqueByHqlName(SystemConstants.SQL_NAME_QUERY_VALIDATE_USER, value);
 	}
 
